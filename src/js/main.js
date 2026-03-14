@@ -1,4 +1,3 @@
-import '../main.css';
 import { initScrollReveal } from './scroll-reveal.js';
 import { initCounters } from './counters.js';
 import { initParticles } from './particles.js';
