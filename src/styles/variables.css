@@ -1,0 +1,100 @@
+/* ==========================================================================
+   GAUNTLET — Design System Tokens
+   ========================================================================== */
+
+:root {
+  /* Primary Brand */
+  --ember: #C0392B;
+  --ember-bright: #E74C3C;
+  --ember-deep: #962D22;
+
+  /* Core Accents */
+  --molten: #E8751A;
+  --gauntlet-gold: #C9982A;
+  --white-fire: #F0D9A0;
+  --cooled-steel: #7A8A9A;
+
+  /* Semantic / Status */
+  --success: #4A9A6A;
+  --warning: #D4872A;
+  --error: #E74C3C;
+  --info: #6888A8;
+
+  /* Dark Neutrals */
+  --void: #06060A;
+  --obsidian: #0C0C12;
+  --charcoal: #14141C;
+  --graphite: #1E1E28;
+  --slate: #2A2A38;
+  --iron: #3A3A4A;
+
+  /* Light Neutrals */
+  --ash: #6B6B80;
+  --silver: #9999AD;
+  --mist: #C8C8D6;
+  --bone: #E8E8EE;
+  --white-hot: #F5F5F8;
+  --pure: #FFFFFF;
+
+  /* Rank Tier Colors */
+  --rank-bronze: #8B6A4E;
+  --rank-silver: #8C9BAA;
+  --rank-gold: #C8A84E;
+  --rank-platinum: #7BB8D4;
+  --rank-diamond: #B8D4F0;
+  --rank-titanium: #5A5A6A;
+  --rank-obsidian: #C0392B;
+
+  /* Rank Gradients */
+  --rank-bronze-gradient: linear-gradient(135deg, #5C3D2E, #8B6A4E, #A88060);
+  --rank-silver-gradient: linear-gradient(135deg, #5A6A78, #8C9BAA, #B8C8D4);
+  --rank-gold-gradient: linear-gradient(135deg, #8B6914, #C8A84E, #E8D48A);
+  --rank-platinum-gradient: linear-gradient(135deg, #4A8AAA, #7BB8D4, #AAD4EA);
+  --rank-diamond-gradient: linear-gradient(135deg, #6A9FCC, #B8D4F0, #E8F0FF);
+  --rank-titanium-gradient: linear-gradient(135deg, #2A2A34, #5A5A6A, #7A7A8A);
+  --rank-obsidian-gradient: linear-gradient(135deg, #1A0A08, #3A1510, #962D22);
+
+  /* Brand Gradients */
+  --ember-flow: linear-gradient(90deg, #962D22, #C0392B, #E8751A);
+  --gauntlet-heat: linear-gradient(90deg, #962D22, #C0392B, #E8751A, #C9982A);
+  --thermal-rise: linear-gradient(180deg, #06060A, #14141C, #1E1E28);
+  --obsidian-glow: radial-gradient(ellipse at center, rgba(192, 57, 43, 0.15), transparent 70%);
+
+  /* Shadows */
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-heavy: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --glow-ember: 0 0 24px rgba(192, 57, 43, 0.4);
+  --glow-gold: 0 0 20px rgba(200, 168, 78, 0.3);
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-default: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Container */
+  --container-max: 1200px;
+  --container-wide: 1440px;
+}

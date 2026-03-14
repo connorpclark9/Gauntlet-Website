@@ -1,0 +1,9 @@
+{
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
+    "expo-app-design@expo-plugins": true,
+    "upgrading-expo@expo-plugins": true,
+    "expo-deployment@expo-plugins": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
+  }
+}

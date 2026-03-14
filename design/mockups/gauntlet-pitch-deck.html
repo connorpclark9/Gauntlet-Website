@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gauntlet — Compete. Climb. Conquer.</title>
+
+    <!-- Fonts: Bebas Neue (display) + Outfit (body) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        /* ===========================================
+           CSS CUSTOM PROPERTIES — GAUNTLET DESIGN SYSTEM
+           =========================================== */
+        :root {
+            /* === GAUNTLET COLORS === */
+            --ember: #C0392B;
+            --ember-bright: #E74C3C;
+            --ember-deep: #962D22;
+            --molten: #E8751A;
+            --gauntlet-gold: #C9982A;
+            --white-fire: #F0D9A0;
+            --cooled-steel: #7A8A9A;
+
+            --success: #4A9A6A;
+            --warning: #D4872A;
+
+            --void: #06060A;
+            --obsidian: #0C0C12;
+            --charcoal: #14141C;
+            --graphite: #1E1E28;
+            --slate: #2A2A38;
+            --iron: #3A3A4A;
+
+            --ash: #6B6B80;
+            --silver: #9999AD;
+            --mist: #C8C8D6;
+            --bone: #E8E8EE;
+            --white-hot: #F5F5F8;
+            --pure: #FFFFFF;
+
+            /* === RANK GRADIENTS === */
+            --rank-bronze: linear-gradient(135deg, #5C3D2E, #8B6A4E, #A88060);
+            --rank-silver: linear-gradient(135deg, #5A6A78, #8C9BAA, #B8C8D4);
+            --rank-gold: linear-gradient(135deg, #8B6914, #C8A84E, #E8D48A);
+            --rank-platinum: linear-gradient(135deg, #4A8AAA, #7BB8D4, #AAD4EA);
+            --rank-diamond: linear-gradient(135deg, #6A9FCC, #B8D4F0, #E8F0FF);
+            --rank-titanium: linear-gradient(135deg, #2A2A34, #5A5A6A, #7A7A8A);
+            --rank-obsidian: linear-gradient(135deg, #1A0A08, #3A1510, #962D22);
+
+            /* === BRAND GRADIENTS === */
+            --ember-flow: linear-gradient(90deg, #962D22, #C0392B, #E8751A);
+            --gauntlet-heat: linear-gradient(90deg, #962D22, #C0392B, #E8751A, #C9982A);
+            --thermal-rise: linear-gradient(180deg, #06060A, #14141C, #1E1E28);
+
+            /* === TYPOGRAPHY === */
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+
+            --title-size: clamp(1.75rem, 5vw, 3.5rem);
+            --hero-size: clamp(3rem, 10vw, 6rem);
+            --subtitle-size: clamp(0.9rem, 1.8vw, 1.3rem);
+            --body-size: clamp(0.8rem, 1.5vw, 1.125rem);
+            --small-size: clamp(0.65rem, 1vw, 0.875rem);
+            --label-size: clamp(0.6rem, 1vw, 0.8rem);
+            --card-title-size: clamp(0.85rem, 1.8vw, 1.2rem);
+            --card-body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+
+            /* === SPACING === */
+            --slide-padding: clamp(1.5rem, 4vw, 4rem);
+            --content-gap: clamp(0.75rem, 2vw, 2rem);
+            --element-gap: clamp(0.25rem, 1vw, 1rem);
+
+            /* === ANIMATION === */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.6s;
+            --duration-slow: 1s;
+        }
+
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+        }
+
+        .card, .container, .content-box {
+            max-width: min(90vw, 1000px);
+            max-height: min(80vh, 700px);
+        }
+
+        .feature-list, .bullet-list {
+            gap: clamp(0.4rem, 1vh, 1rem);
+        }
+
+        .feature-list li, .bullet-list li {
+            font-size: var(--body-size);
+            line-height: 1.4;
+        }
+
+        img, .image-container {
+            max-width: 100%;
+            max-height: min(50vh, 400px);
+            object-fit: contain;
+        }
+
+        /* Short viewports (< 700px height) */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+                --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+                --hero-size: clamp(2rem, 8vw, 4rem);
+            }
+        }
+
+        /* Very short viewports (< 600px height) */
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+                --title-size: clamp(1.1rem, 4vw, 2rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+            .nav-dots, .keyboard-hint, .decorative { display: none; }
+        }
+
+        /* Extremely short (landscape phones, < 500px height) */
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.4rem, 2vw, 1rem);
+                --title-size: clamp(1rem, 3.5vw, 1.5rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+
+        /* Narrow viewports (< 600px width) */
+        @media (max-width: 600px) {
+            :root {
+                --title-size: clamp(1.25rem, 7vw, 2.5rem);
+            }
+            .two-col { flex-direction: column !important; }
+            .two-col > * { width: 100% !important; }
+            .rank-row { flex-wrap: wrap; justify-content: center; }
+            .rank-badge { min-width: clamp(50px, 12vw, 70px); }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ===========================================
+           GLOBAL STYLES — GAUNTLET BRANDED
+           =========================================== */
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--white-hot);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* === SLIDE BACKGROUNDS === */
+        .slide {
+            background: var(--thermal-rise);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Obsidian glow variations */
+        .glow-center::before {
+            background: radial-gradient(ellipse at 50% 60%, rgba(192,57,43,0.12), transparent 70%);
+        }
+        .glow-bottom::before {
+            background: radial-gradient(ellipse at 50% 90%, rgba(192,57,43,0.15), transparent 60%);
+        }
+        .glow-left::before {
+            background: radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.1), transparent 60%);
+        }
+        .glow-right::before {
+            background: radial-gradient(ellipse at 80% 50%, rgba(192,57,43,0.1), transparent 60%);
+        }
+        .glow-top::before {
+            background: radial-gradient(ellipse at 50% 20%, rgba(192,57,43,0.12), transparent 60%);
+        }
+
+        /* === TYPOGRAPHY === */
+        .display {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: clamp(2px, 0.3vw, 4px);
+            line-height: 1.05;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: var(--label-size);
+            text-transform: uppercase;
+            letter-spacing: clamp(2px, 0.4vw, 4px);
+            color: var(--ash);
+        }
+
+        .slide-title {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            text-transform: uppercase;
+            letter-spacing: clamp(1px, 0.2vw, 3px);
+            line-height: 1.1;
+            color: var(--white-hot);
+        }
+
+        .body-text {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            font-weight: 400;
+            color: var(--silver);
+            line-height: 1.6;
+            max-width: 55ch;
+        }
+
+        /* === GRADIENT TEXT === */
+        .gradient-text {
+            background: var(--ember-flow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gauntlet-heat-text {
+            background: var(--gauntlet-heat);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* === CARDS === */
+        .gauntlet-card {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(12px, 2vw, 24px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gauntlet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        /* === TWO COLUMN LAYOUT === */
+        .two-col {
+            display: flex;
+            gap: clamp(1rem, 3vw, 3rem);
+            align-items: center;
+            width: 100%;
+        }
+
+        .two-col > .col-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .two-col > .col-mockup {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* === GAUNTLET HEAT BAR === */
+        .heat-bar {
+            height: 3px;
+            background: var(--gauntlet-heat);
+            border-radius: 2px;
+        }
+
+        .heat-bar-full {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        /* === WATERMARK === */
+        .watermark {
+            position: absolute;
+            bottom: clamp(8px, 1.5vh, 16px);
+            right: clamp(12px, 2vw, 24px);
+            font-family: var(--font-display);
+            font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+            letter-spacing: 6px;
+            color: var(--iron);
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .reveal-blur {
+            opacity: 0;
+            filter: blur(10px);
+            transition: opacity 0.8s var(--ease-out-expo),
+                        filter 0.8s var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal,
+        .slide.visible .reveal-scale,
+        .slide.visible .reveal-left,
+        .slide.visible .reveal-right,
+        .slide.visible .reveal-blur {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Stagger delays */
+        .d1 { transition-delay: 0.1s; }
+        .d2 { transition-delay: 0.2s; }
+        .d3 { transition-delay: 0.3s; }
+        .d4 { transition-delay: 0.4s; }
+        .d5 { transition-delay: 0.5s; }
+        .d6 { transition-delay: 0.6s; }
+        .d7 { transition-delay: 0.7s; }
+        .d8 { transition-delay: 0.8s; }
+        .d9 { transition-delay: 0.9s; }
+        .d10 { transition-delay: 1.0s; }
+        .d11 { transition-delay: 1.1s; }
+        .d12 { transition-delay: 1.2s; }
+
+        /* Shimmer animation for gradient bars */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .shimmer {
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* Obsidian glow pulse */
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(192,57,43,0.3); }
+            50% { box-shadow: 0 0 30px rgba(192,57,43,0.5); }
+        }
+
+        /* Bar grow animation */
+        .bar-animated {
+            transition: height 0.8s var(--ease-out-expo);
+        }
+
+        /* Progress fill animation */
+        .progress-animated {
+            transition: width 1.2s var(--ease-out-expo);
+        }
+
+        /* Width grow from center */
+        @keyframes growFromCenter {
+            from { width: 0; }
+            to { width: clamp(100px, 20vw, 200px); }
+        }
+
+        /* ===========================================
+           PROGRESS BAR (top)
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+            z-index: 9999;
+            transition: width 0.3s ease;
+            width: 0;
+        }
+
+        /* ===========================================
+           NAVIGATION DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(8px, 1.5vw, 20px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 1vh, 10px);
+            z-index: 9998;
+        }
+
+        .nav-dot {
+            width: clamp(6px, 0.6vw, 8px);
+            height: clamp(6px, 0.6vw, 8px);
+            border-radius: 50%;
+            background: var(--slate);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--ember);
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: var(--ember-bright);
+        }
+
+        /* ===========================================
+           SLIDE-SPECIFIC STYLES
+           =========================================== */
+
+        /* === SLIDE 1: GAUNTLET INTRO === */
+        .slide-intro .gauntlet-logo {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 15vw, 10rem);
+            letter-spacing: clamp(6px, 1.5vw, 12px);
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .slide-intro .tagline {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 2vw, 1.4rem);
+            letter-spacing: clamp(3px, 0.5vw, 6px);
+            color: var(--silver);
+        }
+
+        .slide-intro .subtitle {
+            font-family: var(--font-body);
+            font-size: var(--subtitle-size);
+            font-weight: 500;
+            color: var(--mist);
+        }
+
+        .slide-intro .center-bar {
+            width: 0;
+            height: 2px;
+            background: var(--gauntlet-heat);
+            margin: 0 auto;
+        }
+
+        .slide.visible .center-bar {
+            animation: growFromCenter 1s var(--ease-out-expo) 0.9s forwards;
+        }
+
+        /* === SLIDE 2: HOOK === */
+        .slide-hook .hook-line {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 4.2vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: clamp(1px, 0.15vw, 2px);
+            line-height: 1.15;
+            color: var(--white-hot);
+        }
+
+        .slide-hook .hook-punch {
+            color: var(--ember);
+            text-shadow: 0 0 40px rgba(192,57,43,0.3);
+        }
+
+        /* === SLIDE 3: HOW IT WORKS === */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.5rem, 1.5vw, 1.5rem);
+            width: 100%;
+            max-width: min(90vw, 900px);
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+
+        .step-card {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(12px, 2vw, 24px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--ember);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .step-title {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--white-hot);
+            letter-spacing: clamp(1px, 0.2vw, 2px);
+            text-transform: uppercase;
+            margin-top: clamp(4px, 0.5vh, 8px);
+        }
+
+        .step-body {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            color: var(--silver);
+            line-height: 1.5;
+            margin-top: clamp(4px, 0.5vh, 8px);
+        }
+
+        /* === SLIDE 4: DATA VIZ MOCKUP === */
+        .stats-card {
+            width: min(90%, 340px);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(12px, 2vw, 20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        .stats-label {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--ash);
+        }
+
+        .stats-hero {
+            display: flex;
+            align-items: baseline;
+            gap: clamp(4px, 0.5vw, 8px);
+            margin-top: clamp(2px, 0.3vh, 6px);
+        }
+
+        .stats-number {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--ember);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .stats-unit {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--silver);
+            letter-spacing: 2px;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: clamp(4px, 0.8vw, 8px);
+            height: clamp(50px, 10vh, 80px);
+            margin-top: clamp(6px, 1vh, 12px);
+        }
+
+        .bar-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(2px, 0.3vh, 4px);
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .bar {
+            width: 100%;
+            border-radius: 3px 3px 0 0;
+            background: var(--ember-flow);
+            height: 0;
+        }
+
+        .bar-label {
+            font-family: var(--font-body);
+            font-size: clamp(0.5rem, 0.7vw, 0.65rem);
+            color: var(--ash);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .secondary-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: clamp(6px, 1vh, 12px);
+            padding-top: clamp(6px, 1vh, 10px);
+            border-top: 1px solid var(--slate);
+        }
+
+        .secondary-stat {
+            font-family: var(--font-display);
+            font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+            letter-spacing: 1px;
+        }
+
+        .stat-win { color: var(--success); }
+        .stat-loss { color: var(--ember-bright); }
+
+        /* === SLIDE 5: 1v1 COMPETITION MOCKUP === */
+        .comp-card {
+            width: min(90%, 360px);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(12px, 2vw, 20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comp-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        .comp-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(6px, 1vw, 12px);
+            margin-top: clamp(6px, 1vh, 10px);
+        }
+
+        .comp-name {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            font-weight: 600;
+            color: var(--white-hot);
+            width: clamp(30px, 5vw, 50px);
+            flex-shrink: 0;
+        }
+
+        .comp-name.you { color: var(--ember); }
+
+        .comp-bar-track {
+            flex: 1;
+            height: clamp(6px, 0.8vh, 10px);
+            background: var(--graphite);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .comp-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            width: 0;
+        }
+
+        .comp-bar-fill.ember { background: var(--ember-flow); }
+        .comp-bar-fill.neutral { background: var(--slate); }
+
+        .comp-score {
+            font-family: var(--font-display);
+            font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+            letter-spacing: 1px;
+            width: clamp(50px, 8vw, 70px);
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .comp-status {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-weight: 600;
+            color: var(--success);
+            margin-top: clamp(6px, 1vh, 10px);
+            text-align: center;
+        }
+
+        /* === SLIDE 6: SQUAD MOCKUP === */
+        .squad-card {
+            width: min(90%, 360px);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(12px, 2vw, 20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .squad-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        .squad-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .squad-name {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--white-hot);
+            letter-spacing: 2px;
+        }
+
+        .rank-pill {
+            font-family: var(--font-display);
+            font-size: clamp(0.55rem, 0.9vw, 0.7rem);
+            letter-spacing: 1.5px;
+            padding: clamp(2px, 0.3vh, 4px) clamp(6px, 1vw, 10px);
+            border-radius: 4px;
+            background: rgba(200,168,78,0.15);
+        }
+
+        .rank-pill-text {
+            background: var(--rank-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .member-row {
+            display: flex;
+            align-items: center;
+            padding: clamp(5px, 0.6vh, 8px) 0;
+            border-bottom: 1px solid var(--slate);
+        }
+
+        .member-row:last-child { border-bottom: none; }
+
+        .member-pos {
+            font-family: var(--font-display);
+            font-size: clamp(0.8rem, 1.3vw, 1rem);
+            letter-spacing: 1px;
+            width: clamp(24px, 3vw, 36px);
+            flex-shrink: 0;
+        }
+
+        .member-pos.first { color: var(--ember); }
+
+        .member-name {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            font-weight: 500;
+            color: var(--mist);
+            flex: 1;
+        }
+
+        .member-name.you {
+            color: var(--ember);
+            font-weight: 600;
+        }
+
+        .member-miles {
+            font-family: var(--font-display);
+            font-size: clamp(0.8rem, 1.3vw, 1rem);
+            color: var(--white-hot);
+            letter-spacing: 1px;
+        }
+
+        .squad-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: clamp(6px, 1vh, 10px);
+            padding-top: clamp(6px, 1vh, 10px);
+            border-top: 1px solid var(--slate);
+        }
+
+        .total-label {
+            font-family: var(--font-display);
+            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+            letter-spacing: 1px;
+        }
+
+        .total-us { color: var(--ember); }
+        .total-them { color: var(--silver); }
+
+        /* === SLIDE 7: RANKED SYSTEM === */
+        .rank-row {
+            display: flex;
+            gap: clamp(4px, 0.8vw, 10px);
+            justify-content: center;
+            flex-wrap: nowrap;
+            margin-top: clamp(8px, 2vh, 20px);
+        }
+
+        .rank-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(3px, 0.4vh, 6px);
+            padding: clamp(8px, 1.2vw, 14px) clamp(6px, 1vw, 12px);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(6px, 1vw, 10px);
+            min-width: clamp(55px, 10vw, 90px);
+        }
+
+        .rank-badge.obsidian-badge {
+            border-color: rgba(192,57,43,0.4);
+            animation: glowPulse 2.5s ease-in-out infinite;
+        }
+
+        .rank-name {
+            font-family: var(--font-display);
+            font-size: clamp(0.6rem, 1.1vw, 0.85rem);
+            letter-spacing: 1.5px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-name.rank-bronze { background: var(--rank-bronze); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-silver { background: var(--rank-silver); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-gold { background: var(--rank-gold); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-platinum { background: var(--rank-platinum); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-diamond { background: var(--rank-diamond); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-titanium { background: var(--rank-titanium); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .rank-name.rank-obsidian-text { background: var(--rank-obsidian); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .rank-pct {
+            font-family: var(--font-body);
+            font-size: clamp(0.45rem, 0.7vw, 0.6rem);
+            color: var(--ash);
+            font-weight: 500;
+        }
+
+        /* === SLIDE 8: SHAREABLE CARD === */
+        .phone-frame {
+            width: min(70%, 220px);
+            aspect-ratio: 9 / 16;
+            max-height: min(55vh, 380px);
+            background: var(--obsidian);
+            border: 2px solid var(--slate);
+            border-radius: clamp(14px, 2.5vw, 24px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .phone-frame .heat-bar-top {
+            height: 3px;
+            background: var(--gauntlet-heat);
+            flex-shrink: 0;
+        }
+
+        .phone-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(12px, 2vw, 20px);
+            gap: clamp(4px, 0.8vh, 10px);
+        }
+
+        .promo-label {
+            font-family: var(--font-body);
+            font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ash);
+        }
+
+        .promo-old {
+            font-family: var(--font-display);
+            font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+            letter-spacing: 2px;
+            text-decoration: line-through;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background: var(--rank-silver);
+            opacity: 0.6;
+        }
+
+        .promo-arrow {
+            font-family: var(--font-body);
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            color: var(--ash);
+        }
+
+        .promo-new {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            letter-spacing: 3px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background: var(--rank-gold);
+        }
+
+        .promo-stats {
+            font-family: var(--font-body);
+            font-size: clamp(0.45rem, 0.7vw, 0.6rem);
+            color: var(--ash);
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .phone-watermark {
+            font-family: var(--font-display);
+            font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+            letter-spacing: 5px;
+            color: var(--iron);
+            padding-bottom: clamp(6px, 1vh, 12px);
+            text-align: center;
+        }
+
+        /* === SLIDE 9: LEADERBOARD MOCKUP === */
+        .lb-card {
+            width: min(90%, 380px);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lb-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gauntlet-heat);
+        }
+
+        .lb-tabs {
+            display: flex;
+            padding: clamp(8px, 1.2vw, 14px) clamp(12px, 2vw, 20px);
+            gap: clamp(10px, 2vw, 20px);
+            border-bottom: 1px solid var(--slate);
+        }
+
+        .lb-tab {
+            font-family: var(--font-body);
+            font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ash);
+            padding-bottom: clamp(4px, 0.5vh, 6px);
+        }
+
+        .lb-tab.active {
+            color: var(--ember);
+            border-bottom: 2px solid var(--ember);
+        }
+
+        .lb-filters {
+            display: flex;
+            gap: clamp(4px, 0.8vw, 8px);
+            padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 20px);
+        }
+
+        .lb-filter {
+            font-family: var(--font-body);
+            font-size: clamp(0.5rem, 0.7vw, 0.6rem);
+            font-weight: 600;
+            padding: clamp(2px, 0.3vh, 4px) clamp(6px, 1vw, 10px);
+            border-radius: 20px;
+            border: 1px solid var(--slate);
+            color: var(--ash);
+        }
+
+        .lb-filter.active {
+            border-color: rgba(192,57,43,0.3);
+            background: rgba(192,57,43,0.08);
+            color: var(--ember);
+        }
+
+        .lb-rows {
+            padding: 0 clamp(12px, 2vw, 20px) clamp(8px, 1.2vw, 14px);
+        }
+
+        .lb-row {
+            display: flex;
+            align-items: center;
+            padding: clamp(5px, 0.7vh, 8px) 0;
+            border-bottom: 1px solid var(--slate);
+            gap: clamp(6px, 1vw, 10px);
+        }
+
+        .lb-row:last-child { border-bottom: none; }
+
+        .lb-row.you-row {
+            background: rgba(192,57,43,0.06);
+            margin: 0 calc(-1 * clamp(12px, 2vw, 20px));
+            padding-left: clamp(12px, 2vw, 20px);
+            padding-right: clamp(12px, 2vw, 20px);
+        }
+
+        .lb-pos {
+            font-family: var(--font-display);
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            letter-spacing: 1px;
+            color: var(--silver);
+            width: clamp(18px, 2.5vw, 28px);
+            flex-shrink: 0;
+        }
+
+        .lb-player-name {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            font-weight: 500;
+            color: var(--mist);
+            flex: 1;
+        }
+
+        .lb-player-name.you-name { color: var(--ember); font-weight: 600; }
+
+        .lb-rank-tiny {
+            font-family: var(--font-display);
+            font-size: clamp(0.4rem, 0.6vw, 0.5rem);
+            letter-spacing: 1px;
+            padding: clamp(1px, 0.15vh, 2px) clamp(4px, 0.6vw, 6px);
+            border-radius: 3px;
+            background: rgba(200,168,78,0.1);
+        }
+
+        .lb-miles {
+            font-family: var(--font-display);
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            color: var(--white-hot);
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        /* === SLIDE 10: GAUNTLET === */
+        .gauntlet-matchup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 2vw, 24px);
+            width: 100%;
+            max-width: min(90vw, 700px);
+            margin: 0 auto;
+            margin-top: clamp(8px, 2vh, 20px);
+        }
+
+        .gauntlet-team {
+            flex: 1;
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(10px, 1.5vw, 14px);
+            padding: clamp(10px, 1.5vw, 20px);
+            text-align: center;
+        }
+
+        .gauntlet-team.winning {
+            border-color: rgba(192,57,43,0.3);
+            box-shadow: 0 0 20px rgba(192,57,43,0.1);
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+            color: var(--white-hot);
+            letter-spacing: 2px;
+        }
+
+        .team-members {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            color: var(--ash);
+            margin-top: clamp(2px, 0.3vh, 4px);
+        }
+
+        .team-miles {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            letter-spacing: 2px;
+            margin-top: clamp(4px, 0.5vh, 8px);
+            line-height: 1;
+        }
+
+        .team-miles.leading { color: var(--ember); }
+        .team-miles.trailing { color: var(--silver); }
+
+        .team-unit {
+            font-family: var(--font-display);
+            font-size: clamp(0.6rem, 1vw, 0.8rem);
+            color: var(--ash);
+            letter-spacing: 2px;
+        }
+
+        .vs-badge {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--molten);
+            letter-spacing: 3px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .vs-badge::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(192,57,43,0.2), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .gauntlet-progress {
+            width: 100%;
+            max-width: min(90vw, 700px);
+            margin: clamp(6px, 1vh, 12px) auto 0;
+            height: clamp(4px, 0.5vh, 6px);
+            background: var(--graphite);
+            border-radius: 3px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .gauntlet-fill-left {
+            height: 100%;
+            background: var(--ember-flow);
+            width: 0;
+        }
+
+        .gauntlet-fill-right {
+            height: 100%;
+            background: var(--slate);
+            flex: 1;
+        }
+
+        .gauntlet-status {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            font-weight: 600;
+            color: var(--warning);
+            text-align: center;
+            margin-top: clamp(4px, 0.5vh, 8px);
+        }
+
+        /* === SLIDE 11: WHY FRATS === */
+        .pitch-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(6px, 1.2vw, 14px);
+            width: 100%;
+            max-width: min(90vw, 800px);
+            margin: clamp(6px, 1.5vh, 16px) auto 0;
+        }
+
+        @media (max-width: 600px) {
+            .pitch-grid { grid-template-columns: 1fr; }
+        }
+
+        .pitch-card {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-left: 3px solid var(--ember);
+            border-radius: clamp(6px, 1vw, 10px);
+            padding: clamp(10px, 1.5vw, 18px);
+        }
+
+        .pitch-card-title {
+            font-family: var(--font-display);
+            font-size: var(--card-title-size);
+            color: var(--ember);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .pitch-card-body {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            color: var(--silver);
+            line-height: 1.5;
+            margin-top: clamp(3px, 0.4vh, 6px);
+        }
+
+        /* === SLIDE 12: SCENARIOS === */
+        .scenarios {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.5vh, 16px);
+            max-width: min(90vw, 700px);
+        }
+
+        .scenario {
+            border-left: 3px solid var(--ember);
+            padding-left: clamp(10px, 2vw, 20px);
+        }
+
+        .scenario p {
+            font-family: var(--font-body);
+            font-size: var(--body-size);
+            font-weight: 500;
+            color: var(--mist);
+            line-height: 1.6;
+        }
+
+        .scenario .highlight {
+            color: var(--ember);
+            font-weight: 600;
+        }
+
+        /* === SLIDE 13: FEATURE SUMMARY === */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(6px, 1.2vw, 12px);
+            width: 100%;
+            max-width: min(90vw, 800px);
+            margin: clamp(6px, 1.5vh, 16px) auto 0;
+        }
+
+        @media (max-width: 700px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 450px) {
+            .summary-grid { grid-template-columns: 1fr; }
+        }
+
+        .summary-item {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: clamp(6px, 1vw, 10px);
+            padding: clamp(10px, 1.5vw, 16px);
+            transition: border-color 0.3s ease;
+        }
+
+        .slide.visible .summary-item:hover {
+            border-color: rgba(192,57,43,0.3);
+        }
+
+        .summary-title {
+            font-family: var(--font-display);
+            font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+            color: var(--white-hot);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .summary-desc {
+            font-family: var(--font-body);
+            font-size: var(--card-body-size);
+            color: var(--silver);
+            line-height: 1.4;
+            margin-top: clamp(2px, 0.3vh, 4px);
+        }
+
+        /* === SLIDE 14: CTA === */
+        .slide-cta .cta-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            letter-spacing: clamp(3px, 0.5vw, 8px);
+            line-height: 1;
+        }
+
+        .slide-cta .cta-sub {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 500;
+            color: var(--mist);
+        }
+
+        .slide-cta .cta-above {
+            font-family: var(--font-body);
+            font-size: clamp(0.65rem, 1vw, 0.85rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: clamp(2px, 0.4vw, 4px);
+            color: var(--ash);
+        }
+
+        .slide-cta .cta-platform {
+            font-family: var(--font-display);
+            font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+            color: var(--white-hot);
+            letter-spacing: 3px;
+        }
+
+        .slide-cta .cta-early {
+            font-family: var(--font-body);
+            font-size: var(--small-size);
+            color: var(--silver);
+        }
+
+        .cta-bar {
+            width: 0;
+            height: 2px;
+            background: var(--gauntlet-heat);
+            margin: 0 auto;
+        }
+
+        .slide.visible .cta-bar {
+            animation: growFromCenter 1s var(--ease-out-expo) 1.2s forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === PROGRESS BAR === -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- === NAVIGATION DOTS === -->
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+    <!-- ===========================================
+         SLIDE 1: GAUNTLET INTRO
+         =========================================== -->
+    <section class="slide slide-intro glow-center" aria-label="Gauntlet Introduction">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: clamp(6px, 1.5vh, 16px);">
+            <p class="section-label reveal d1">INTRODUCING</p>
+            <h1 class="gauntlet-logo gradient-text reveal-blur d3">GAUNTLET</h1>
+            <p class="subtitle reveal d5">Ranked fitness competition for anyone who moves.</p>
+            <div class="center-bar reveal d7"></div>
+            <p class="tagline reveal d8">COMPETE. CLIMB. CONQUER.</p>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 2: THE HOOK
+         =========================================== -->
+    <section class="slide slide-hook glow-center" aria-label="Core Insight">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: clamp(6px, 1.5vh, 14px);">
+            <p class="section-label reveal d1">THE PROBLEM WITH FITNESS APPS</p>
+            <h2 class="hook-line reveal d3">THE BEST ACCOUNTABILITY PARTNER</h2>
+            <h2 class="hook-line reveal d5">ISN'T A COACH OR AN APP NOTIFICATION.</h2>
+            <h2 class="hook-line hook-punch reveal-scale d7">IT'S A FRIEND YOU'RE TRYING TO BEAT.</h2>
+        </div>
+        <div class="heat-bar-full"></div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 3: HOW IT WORKS
+         =========================================== -->
+    <section class="slide glow-bottom" aria-label="How It Works">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+            <h2 class="slide-title reveal d1">HOW IT WORKS</h2>
+            <div class="steps-grid">
+                <div class="step-card reveal-scale d3">
+                    <p class="step-number">01</p>
+                    <p class="step-title">CONNECT</p>
+                    <p class="step-body">Link your Apple Watch, Garmin, Fitbit, or Strava. Every workout syncs automatically.</p>
+                </div>
+                <div class="step-card reveal-scale d5">
+                    <p class="step-number">02</p>
+                    <p class="step-title">COMPETE</p>
+                    <p class="step-body">Challenge friends head-to-head. Build a squad. Enter the Gauntlet. Every step counts toward the win.</p>
+                </div>
+                <div class="step-card reveal-scale d7">
+                    <p class="step-number">03</p>
+                    <p class="step-title">CLIMB</p>
+                    <p class="step-body">Win competitions, build streaks, and rank up from Bronze to Obsidian.</p>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 4: PERSONAL DATA VIZ
+         =========================================== -->
+    <section class="slide glow-right" aria-label="Personal Data Visualizations">
+        <div class="slide-content">
+            <div class="two-col">
+                <div class="col-text">
+                    <p class="section-label reveal d1">YOUR DATA</p>
+                    <h2 class="slide-title reveal d2" style="margin-top: clamp(4px, 0.5vh, 8px);">EVERY REP. EVERY MILE. VISUALIZED.</h2>
+                    <p class="body-text reveal d3" style="margin-top: clamp(6px, 1vh, 12px);">Weekly mileage curves, step heatmaps, activity breakdowns, win/loss trends. Your training turned into data you actually want to look at.</p>
+                </div>
+                <div class="col-mockup">
+                    <div class="stats-card reveal-scale d4">
+                        <p class="stats-label">THIS WEEK</p>
+                        <div class="stats-hero">
+                            <span class="stats-number" data-count-to="47.3">0</span>
+                            <span class="stats-unit">MI</span>
+                        </div>
+                        <div class="bar-chart">
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="65%"></div>
+                                <span class="bar-label">M</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="45%"></div>
+                                <span class="bar-label">T</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="80%"></div>
+                                <span class="bar-label">W</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="30%"></div>
+                                <span class="bar-label">T</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="90%"></div>
+                                <span class="bar-label">F</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="55%"></div>
+                                <span class="bar-label">S</span>
+                            </div>
+                            <div class="bar-col">
+                                <div class="bar bar-animated" data-height="20%"></div>
+                                <span class="bar-label">S</span>
+                            </div>
+                        </div>
+                        <div class="secondary-stats">
+                            <span class="secondary-stat"><span class="stat-win">3W</span> - <span class="stat-loss">1L</span></span>
+                            <span class="secondary-stat" style="color: var(--white-hot);" data-count-to="12847" data-suffix=" STEPS/DAY">0</span>
+                        </div>
+                        <p style="font-family: var(--font-display); font-size: clamp(0.45rem, 0.6vw, 0.55rem); letter-spacing: 5px; color: var(--iron); text-align: center; margin-top: clamp(6px, 1vh, 10px);">GAUNTLET</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 5: 1v1 COMPETITIONS
+         =========================================== -->
+    <section class="slide glow-left" aria-label="Friend vs Friend Competitions">
+        <div class="slide-content">
+            <div class="two-col">
+                <div class="col-mockup">
+                    <div class="comp-card reveal-left d2">
+                        <p class="stats-label">ACTIVE COMPETITION</p>
+                        <p style="font-family: var(--font-body); font-size: var(--small-size); color: var(--silver); font-weight: 500; margin-top: clamp(2px, 0.3vh, 4px);">RUNNING &mdash; THIS WEEK</p>
+                        <div class="comp-row">
+                            <span class="comp-name you">YOU</span>
+                            <div class="comp-bar-track">
+                                <div class="comp-bar-fill ember progress-animated" data-width="68%"></div>
+                            </div>
+                            <span class="comp-score" style="color: var(--ember);" data-count-to="18.4" data-suffix=" MI">0</span>
+                        </div>
+                        <div class="comp-row">
+                            <span class="comp-name" style="color: var(--mist);">JAKE</span>
+                            <div class="comp-bar-track">
+                                <div class="comp-bar-fill neutral progress-animated" data-width="48%"></div>
+                            </div>
+                            <span class="comp-score" style="color: var(--silver);" data-count-to="13.7" data-suffix=" MI">0</span>
+                        </div>
+                        <p class="comp-status">4.7 MI AHEAD</p>
+                        <p style="font-family: var(--font-display); font-size: clamp(0.45rem, 0.6vw, 0.55rem); letter-spacing: 5px; color: var(--iron); text-align: center; margin-top: clamp(6px, 1vh, 10px);">GAUNTLET</p>
+                    </div>
+                </div>
+                <div class="col-text">
+                    <p class="section-label reveal d1">1V1 COMPETITIONS</p>
+                    <h2 class="slide-title reveal d3" style="margin-top: clamp(4px, 0.5vh, 8px);">YOUR BUDDY TALKED TRASH. NOW PROVE IT.</h2>
+                    <p class="body-text reveal d5" style="margin-top: clamp(6px, 1vh, 12px);">Head-to-head competitions. Pick the activity, set the timeframe, let the numbers talk. Real-time updates so you know exactly where you stand.</p>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 6: SQUAD COMPETITIONS
+         =========================================== -->
+    <section class="slide glow-right" aria-label="Squad Competitions">
+        <div class="slide-content">
+            <div class="two-col">
+                <div class="col-text">
+                    <p class="section-label reveal d1">SQUADS</p>
+                    <h2 class="slide-title reveal d2" style="margin-top: clamp(4px, 0.5vh, 8px);">YOU DON'T JUST LET YOURSELF DOWN. YOU LET YOUR SQUAD DOWN.</h2>
+                    <p class="body-text reveal d3" style="margin-top: clamp(6px, 1vh, 12px);">2-10 friends. One squad. Compete against other squads your size and rank. Nobody coasts.</p>
+                </div>
+                <div class="col-mockup">
+                    <div class="squad-card reveal-right d4">
+                        <p class="stats-label">SQUAD STANDINGS</p>
+                        <div class="squad-header" style="margin-top: clamp(4px, 0.5vh, 6px);">
+                            <span class="squad-name">LAMBDA CHI</span>
+                            <span class="rank-pill"><span class="rank-pill-text">GOLD II</span></span>
+                        </div>
+                        <div style="margin-top: clamp(6px, 0.8vh, 10px);">
+                            <div class="member-row">
+                                <span class="member-pos first">#1</span>
+                                <span class="member-name">MARCUS</span>
+                                <span class="member-miles" data-count-to="24.1">0</span>
+                            </div>
+                            <div class="member-row">
+                                <span class="member-pos" style="color: var(--silver);">#2</span>
+                                <span class="member-name you">YOU</span>
+                                <span class="member-miles" data-count-to="22.8">0</span>
+                            </div>
+                            <div class="member-row">
+                                <span class="member-pos" style="color: var(--silver);">#3</span>
+                                <span class="member-name">TYLER</span>
+                                <span class="member-miles" data-count-to="19.4">0</span>
+                            </div>
+                            <div class="member-row">
+                                <span class="member-pos" style="color: var(--silver);">#4</span>
+                                <span class="member-name">DREW</span>
+                                <span class="member-miles" data-count-to="16.2">0</span>
+                            </div>
+                        </div>
+                        <div class="squad-total">
+                            <span class="total-label total-us">SQUAD: <span data-count-to="82.5">0</span> MI</span>
+                            <span class="total-label total-them">OPP: <span data-count-to="71.3">0</span> MI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 7: THE RANKED SYSTEM
+         =========================================== -->
+    <section class="slide glow-center" aria-label="The Ranked System">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+            <h2 class="slide-title reveal d1">EVERY COMPETITOR GETS A RANK. YOURS IS EARNED.</h2>
+            <p class="body-text reveal d2" style="text-align: center; margin: 0 auto;">7 tiers. Based on volume, consistency, and competitive results. You compete against your rank. Everyone has a shot.</p>
+            <div class="rank-row">
+                <div class="rank-badge reveal-scale d3">
+                    <span class="rank-name rank-bronze">BRONZE</span>
+                    <span class="rank-pct">BOTTOM 40%</span>
+                </div>
+                <div class="rank-badge reveal-scale d4">
+                    <span class="rank-name rank-silver">SILVER</span>
+                    <span class="rank-pct">40-60%</span>
+                </div>
+                <div class="rank-badge reveal-scale d5">
+                    <span class="rank-name rank-gold">GOLD</span>
+                    <span class="rank-pct">60-80%</span>
+                </div>
+                <div class="rank-badge reveal-scale d6">
+                    <span class="rank-name rank-platinum">PLATINUM</span>
+                    <span class="rank-pct">80-90%</span>
+                </div>
+                <div class="rank-badge reveal-scale d7">
+                    <span class="rank-name rank-diamond">DIAMOND</span>
+                    <span class="rank-pct">90-97%</span>
+                </div>
+                <div class="rank-badge reveal-scale d8">
+                    <span class="rank-name rank-titanium">TITANIUM</span>
+                    <span class="rank-pct">97-99%</span>
+                </div>
+                <div class="rank-badge obsidian-badge reveal-scale d9">
+                    <span class="rank-name rank-obsidian-text">OBSIDIAN</span>
+                    <span class="rank-pct">TOP 1%</span>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 8: SHAREABLE CARDS
+         =========================================== -->
+    <section class="slide glow-left" aria-label="Shareable Cards">
+        <div class="slide-content">
+            <div class="two-col">
+                <div class="col-text">
+                    <p class="section-label reveal d1">SHAREABLE CARDS</p>
+                    <h2 class="slide-title reveal d2" style="margin-top: clamp(4px, 0.5vh, 8px);">BUILT TO BE SCREENSHOTTED.</h2>
+                    <p class="body-text reveal d3" style="margin-top: clamp(6px, 1vh, 12px);">Every rank up, every win, every milestone generates a shareable card. Your stats, your story, your flex.</p>
+                    <p class="reveal d5" style="font-family: var(--font-body); font-size: var(--small-size); color: var(--ash); margin-top: clamp(8px, 1.5vh, 14px);">Instagram Stories, TikTok, iMessage. One tap.</p>
+                </div>
+                <div class="col-mockup">
+                    <div class="phone-frame reveal-scale d4">
+                        <div class="heat-bar-top"></div>
+                        <div class="phone-content">
+                            <p class="promo-label">RANK PROMOTION</p>
+                            <p class="promo-old rank-name rank-silver">SILVER III</p>
+                            <p class="promo-arrow">&darr;</p>
+                            <p class="promo-new rank-name rank-gold">GOLD I</p>
+                            <p class="promo-stats">47 COMPETITIONS &bull; 31W-16L &bull; 287 MI</p>
+                        </div>
+                        <p class="phone-watermark">GAUNTLET</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 9: LEADERBOARDS
+         =========================================== -->
+    <section class="slide glow-right" aria-label="Leaderboards">
+        <div class="slide-content">
+            <div class="two-col">
+                <div class="col-text">
+                    <p class="section-label reveal d1">LEADERBOARDS</p>
+                    <h2 class="slide-title reveal d2" style="margin-top: clamp(4px, 0.5vh, 8px);">THE SCOREBOARD DOESN'T LIE.</h2>
+                    <p class="body-text reveal d3" style="margin-top: clamp(6px, 1vh, 12px);">Global, campus, squad. Filtered by activity, time, rank tier. See where you stand. Climb higher.</p>
+                </div>
+                <div class="col-mockup">
+                    <div class="lb-card reveal-right d4">
+                        <div class="lb-tabs">
+                            <span class="lb-tab active">CAMPUS</span>
+                            <span class="lb-tab">GLOBAL</span>
+                            <span class="lb-tab">SQUAD</span>
+                        </div>
+                        <div class="lb-filters">
+                            <span class="lb-filter active">RUNNING</span>
+                            <span class="lb-filter">THIS WEEK</span>
+                        </div>
+                        <div class="lb-rows">
+                            <div class="lb-row">
+                                <span class="lb-pos">#1</span>
+                                <span class="lb-player-name">MARCUS</span>
+                                <span class="lb-rank-tiny"><span class="rank-name rank-gold" style="font-size: inherit;">G3</span></span>
+                                <span class="lb-miles" data-count-to="31.2">0</span>
+                            </div>
+                            <div class="lb-row you-row">
+                                <span class="lb-pos" style="color: var(--ember);">#2</span>
+                                <span class="lb-player-name you-name">YOU</span>
+                                <span class="lb-rank-tiny"><span class="rank-name rank-gold" style="font-size: inherit;">G2</span></span>
+                                <span class="lb-miles" style="color: var(--ember);" data-count-to="28.7">0</span>
+                            </div>
+                            <div class="lb-row">
+                                <span class="lb-pos">#3</span>
+                                <span class="lb-player-name">JAKE</span>
+                                <span class="lb-rank-tiny"><span class="rank-name rank-gold" style="font-size: inherit;">G1</span></span>
+                                <span class="lb-miles" data-count-to="27.1">0</span>
+                            </div>
+                            <div class="lb-row">
+                                <span class="lb-pos">#4</span>
+                                <span class="lb-player-name">DREW</span>
+                                <span class="lb-rank-tiny"><span class="rank-name rank-silver" style="font-size: inherit;">S3</span></span>
+                                <span class="lb-miles" data-count-to="24.8">0</span>
+                            </div>
+                            <div class="lb-row">
+                                <span class="lb-pos">#5</span>
+                                <span class="lb-player-name">CONNOR</span>
+                                <span class="lb-rank-tiny"><span class="rank-name rank-silver" style="font-size: inherit;">S2</span></span>
+                                <span class="lb-miles" data-count-to="23.4">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 10: GAUNTLET
+         =========================================== -->
+    <section class="slide glow-center" aria-label="Gauntlet">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+            <p class="section-label reveal d1" style="color: var(--molten);">THE GAUNTLET</p>
+            <h2 class="slide-title reveal d2">YOUR CHAPTER VS. THEIRS. ONE WEEK. TOTAL DISTANCE.</h2>
+            <p class="body-text reveal d3" style="text-align: center; margin: 0 auto;">The Gauntlet is built for exactly this. Frat vs. frat, floor vs. floor, club vs. club. Pick your roster, lock it in, and find out who actually puts in work.</p>
+            <div class="gauntlet-matchup">
+                <div class="gauntlet-team winning reveal-left d5">
+                    <p class="team-name">LAMBDA CHI</p>
+                    <p class="team-members">12 MEMBERS</p>
+                    <p class="team-miles leading" data-count-to="147.3">0</p>
+                    <p class="team-unit">MI</p>
+                </div>
+                <div class="vs-badge reveal-scale d6">VS</div>
+                <div class="gauntlet-team reveal-right d5">
+                    <p class="team-name">SIGMA NU</p>
+                    <p class="team-members">12 MEMBERS</p>
+                    <p class="team-miles trailing" data-count-to="132.8">0</p>
+                    <p class="team-unit">MI</p>
+                </div>
+            </div>
+            <div style="width: 100%; max-width: min(90vw, 700px); margin: 0 auto;">
+                <div class="gauntlet-progress reveal d8">
+                    <div class="gauntlet-fill-left progress-animated" data-width="52.6%"></div>
+                    <div class="gauntlet-fill-right"></div>
+                </div>
+                <p class="gauntlet-status reveal d9">3 DAYS LEFT</p>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 11: WHY FRATS
+         =========================================== -->
+    <section class="slide glow-bottom" aria-label="Built For You">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+            <h2 class="slide-title reveal d1">BUILT FOR HOW YOU ALREADY COMPETE.</h2>
+            <div class="pitch-grid">
+                <div class="pitch-card reveal-scale d3">
+                    <p class="pitch-card-title">INTRAMURALS ON STEROIDS</p>
+                    <p class="pitch-card-body">You already compete for your house. Gauntlet makes it year-round, tracked, and ranked. Every brother's miles count.</p>
+                </div>
+                <div class="pitch-card reveal-scale d4">
+                    <p class="pitch-card-title">THE GROUP CHAT, WEAPONIZED</p>
+                    <p class="pitch-card-body">Real-time notifications when someone passes you. Push updates when your squad's losing. Talk is cheap. The leaderboard isn't.</p>
+                </div>
+                <div class="pitch-card reveal-scale d5">
+                    <p class="pitch-card-title">PLEDGES TO PRESIDENTS</p>
+                    <p class="pitch-card-body">Pledge class gauntlets, active member leagues, alumni challenges. Every generation of the house competes.</p>
+                </div>
+                <div class="pitch-card reveal-scale d6">
+                    <p class="pitch-card-title">BRAGGING RIGHTS WITH RECEIPTS</p>
+                    <p class="pitch-card-body">Shareable cards after every win. Post the receipts. Settle the debate. The numbers don't lie.</p>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 12: PICTURE THIS
+         =========================================== -->
+    <section class="slide glow-left" aria-label="Scenarios">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <h2 class="slide-title reveal d1">PICTURE THIS.</h2>
+            <div class="scenarios">
+                <div class="scenario reveal-left d3">
+                    <p>It's Wednesday. Your squad's down <span class="highlight">3,000 steps</span> to Sigma Nu. Your pledge brother just got a notification. He's at the gym by <span class="highlight">7 AM</span>.</p>
+                </div>
+                <div class="scenario reveal-left d5">
+                    <p>It's Friday. You check the campus leaderboard. Your house is <span class="highlight">#3</span>. Two spots from first. The whole house is talking about it.</p>
+                </div>
+                <div class="scenario reveal-left d7">
+                    <p>It's Sunday night. Your shareable card hits the group chat. <span class="highlight">4 wins, 0 losses. Gold II.</span> Nobody's saying anything because the numbers already said it.</p>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 13: FEATURE SUMMARY
+         =========================================== -->
+    <section class="slide glow-bottom" aria-label="Feature Summary">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+            <h2 class="slide-title reveal d1">EVERYTHING IN YOUR POCKET.</h2>
+            <div class="summary-grid">
+                <div class="summary-item reveal-scale d2">
+                    <p class="summary-title">1V1 COMPETITIONS</p>
+                    <p class="summary-desc">Challenge anyone. Any activity. Any timeframe.</p>
+                </div>
+                <div class="summary-item reveal-scale d3">
+                    <p class="summary-title">SQUAD BATTLES</p>
+                    <p class="summary-desc">2-10 friends per squad. Compete as a unit.</p>
+                </div>
+                <div class="summary-item reveal-scale d4">
+                    <p class="summary-title">GAUNTLET</p>
+                    <p class="summary-desc">Large-scale matchups. Built for Greek life.</p>
+                </div>
+                <div class="summary-item reveal-scale d5">
+                    <p class="summary-title">RANKED TIERS</p>
+                    <p class="summary-desc">Bronze to Obsidian. Everyone earns their rank.</p>
+                </div>
+                <div class="summary-item reveal-scale d6">
+                    <p class="summary-title">DATA & ANALYTICS</p>
+                    <p class="summary-desc">Curves, heatmaps, trends. Your training visualized.</p>
+                </div>
+                <div class="summary-item reveal-scale d7">
+                    <p class="summary-title">SHAREABLE CARDS</p>
+                    <p class="summary-desc">Win, screenshot, post. Repeat.</p>
+                </div>
+            </div>
+        </div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+         SLIDE 14: CTA
+         =========================================== -->
+    <section class="slide slide-cta glow-center" aria-label="Call to Action">
+        <div class="slide-content" style="align-items: center; text-align: center; gap: clamp(8px, 1.5vh, 16px);">
+            <p class="cta-above reveal d1">FREE TO DOWNLOAD. NO ADS. EVER.</p>
+            <h2 class="cta-tagline gauntlet-heat-text reveal-blur d3">COMPETE.<br>CLIMB.<br>CONQUER.</h2>
+            <p class="cta-sub reveal d6">Your squad's waiting.</p>
+            <div class="cta-bar reveal d8"></div>
+            <p class="cta-platform reveal d9">COMING SOON TO IOS</p>
+            <p class="cta-early reveal d10">Sign up for early access</p>
+        </div>
+        <div class="heat-bar-full"></div>
+        <span class="watermark">GAUNTLET</span>
+    </section>
+
+    <!-- ===========================================
+       JAVASCRIPT: Slide Controller
+       =========================================== -->
+    <script>
+        /* === SLIDE PRESENTATION CONTROLLER === */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupTouchNav();
+                this.setupProgressBar();
+                this.setupNavDots();
+                this.setupCounterAnimations();
+                this.setupBarAnimations();
+                this.setupProgressFills();
+            }
+
+            /* --- Intersection Observer: triggers .visible on scroll --- */
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const idx = Array.from(this.slides).indexOf(entry.target);
+                            if (idx !== -1) {
+                                this.currentSlide = idx;
+                                this.updateNavDots();
+                                this.updateProgressBar();
+                            }
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            /* --- Keyboard navigation --- */
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                        e.preventDefault();
+                        this.goToSlide(this.currentSlide + 1);
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                        e.preventDefault();
+                        this.goToSlide(this.currentSlide - 1);
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        this.goToSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        this.goToSlide(this.slides.length - 1);
+                    }
+                });
+            }
+
+            /* --- Touch/swipe navigation --- */
+            setupTouchNav() {
+                let startY = 0;
+                let startX = 0;
+
+                document.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                    startX = e.touches[0].clientX;
+                }, { passive: true });
+
+                document.addEventListener('touchend', (e) => {
+                    const deltaY = startY - e.changedTouches[0].clientY;
+                    const deltaX = startX - e.changedTouches[0].clientX;
+
+                    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+                        if (deltaY > 0) {
+                            this.goToSlide(this.currentSlide + 1);
+                        } else {
+                            this.goToSlide(this.currentSlide - 1);
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            /* --- Navigate to specific slide --- */
+            goToSlide(index) {
+                if (index < 0 || index >= this.slides.length) return;
+                this.currentSlide = index;
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+            }
+
+            /* --- Progress bar at top --- */
+            setupProgressBar() {
+                this.progressBar = document.getElementById('progressBar');
+                window.addEventListener('scroll', () => this.updateProgressBar(), { passive: true });
+            }
+
+            updateProgressBar() {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                this.progressBar.style.width = progress + '%';
+            }
+
+            /* --- Navigation dots --- */
+            setupNavDots() {
+                const nav = document.getElementById('navDots');
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    nav.appendChild(dot);
+                });
+                this.dots = nav.querySelectorAll('.nav-dot');
+            }
+
+            updateNavDots() {
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            /* --- Counter animations for hero stats --- */
+            setupCounterAnimations() {
+                const counters = document.querySelectorAll('[data-count-to]');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.dataset.counted) {
+                            entry.target.dataset.counted = 'true';
+                            this.animateCounter(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                counters.forEach(el => observer.observe(el));
+            }
+
+            animateCounter(el) {
+                const target = parseFloat(el.dataset.countTo);
+                const suffix = el.dataset.suffix || '';
+                const isDecimal = target % 1 !== 0;
+                const duration = 1500;
+                const start = performance.now();
+
+                const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+                const step = (now) => {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = easeOutExpo(progress);
+                    const current = target * eased;
+
+                    if (isDecimal) {
+                        el.textContent = current.toFixed(1) + suffix;
+                    } else {
+                        el.textContent = Math.round(current).toLocaleString() + suffix;
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                };
+
+                requestAnimationFrame(step);
+            }
+
+            /* --- Bar chart height animations --- */
+            setupBarAnimations() {
+                const bars = document.querySelectorAll('[data-height]');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const barsInSlide = entry.target.querySelectorAll('[data-height]');
+                            barsInSlide.forEach((bar, i) => {
+                                setTimeout(() => {
+                                    bar.style.height = bar.dataset.height;
+                                }, 800 + (i * 100));
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => {
+                    if (slide.querySelector('[data-height]')) {
+                        observer.observe(slide);
+                    }
+                });
+            }
+
+            /* --- Progress bar fill animations --- */
+            setupProgressFills() {
+                const fills = document.querySelectorAll('[data-width]');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const fillsInSlide = entry.target.querySelectorAll('[data-width]');
+                            fillsInSlide.forEach((fill) => {
+                                setTimeout(() => {
+                                    fill.style.width = fill.dataset.width;
+                                }, 800);
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => {
+                    if (slide.querySelector('[data-width]')) {
+                        observer.observe(slide);
+                    }
+                });
+            }
+        }
+
+        /* === Initialize === */
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>

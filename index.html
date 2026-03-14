@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauntlet — Compete. Climb. Conquer.</title>
+  <meta name="description" content="Gauntlet turns every workout into a competition, every friend group into a squad, and every athlete into a ranked contender. Download free.">
+  <meta property="og:title" content="Gauntlet — Compete. Climb. Conquer.">
+  <meta property="og:description" content="The social fitness competition app. Head-to-head battles. Squads. Ranked tiers from Bronze to Obsidian. Download free.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#06060A">
+  <link rel="icon" type="image/png" href="/images/gauntlet-app-icon.png">
+  <link rel="apple-touch-icon" href="/images/gauntlet-app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="/src/js/main.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a class="nav__logo" href="#">
+        <img src="/images/gauntlet-logo.png" alt="Gauntlet" loading="eager">
+      </a>
+      <div class="nav__links">
+        <a href="#features">Features</a>
+        <a href="#ranks">Ranks</a>
+        <a href="#app">App</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <a href="#download" class="btn btn--primary nav__cta">Get the App</a>
+      <button class="nav__mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav__mobile-menu">
+      <a href="#features">Features</a>
+      <a href="#ranks">Ranks</a>
+      <a href="#app">App</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#download" class="btn btn--primary btn--large">Get the App</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg-gradient"></div>
+    <canvas id="hero-particles"></canvas>
+    <div class="hero__container">
+      <div class="hero__content">
+        <p class="kicker" data-reveal="up">THE SCOREBOARD DOESN'T LIE</p>
+        <h1 class="hero__title" data-reveal="up" data-delay="1">COMPETE.<br>CLIMB.<br>CONQUER.</h1>
+        <p class="hero__subtitle" data-reveal="up" data-delay="2">Gauntlet turns every workout into a competition, every friend group into a squad, and every athlete into a ranked contender.</p>
+        <div class="hero__actions" data-reveal="up" data-delay="3">
+          <a href="#download" class="btn btn--primary btn--large">Download Free</a>
+          <a href="#how-it-works" class="btn btn--ghost btn--large">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero__visual" data-reveal="scale" data-delay="2">
+        <div class="hero__phone-glow"></div>
+        <div class="phone-frame phone-frame--large animate-float">
+          <div class="phone-screen">
+            <div class="phone-screen-embers"></div>
+            <div class="phone-screen-glow-bottom"></div>
+            <!-- Status Bar -->
+            <div class="status-bar">
+              <span>9:41</span>
+              <span style="display:flex;gap:6px;align-items:center;">
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="4" width="3" height="8" rx="1" fill="currentColor" opacity="0.4"/><rect x="4.5" y="2.5" width="3" height="9.5" rx="1" fill="currentColor" opacity="0.6"/><rect x="9" y="1" width="3" height="11" rx="1" fill="currentColor" opacity="0.8"/><rect x="13.5" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+                <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="20" height="11" rx="2" stroke="currentColor" stroke-opacity="0.4"/><rect x="21.5" y="3.5" width="2" height="5" rx="1" fill="currentColor" opacity="0.4"/><rect x="2" y="2" width="14" height="8" rx="1" fill="#4A9A6A"/></svg>
+              </span>
+            </div>
+            <!-- Feed Screen Content -->
+            <div style="padding:16px 20px 100px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                <div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#F5F5F8;">TODAY</div>
+                  <div style="font-size:12px;color:#6B6B80;">March 14, 2026</div>
+                </div>
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#C0392B,#E8751A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;">C</div>
+              </div>
+              <!-- Daily Summary Card -->
+              <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;margin-bottom:16px;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#962D22,#C0392B,#E8751A,#C9982A);"></div>
+                <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">DAILY SUMMARY</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;">
+                  <div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#C0392B;letter-spacing:1px;">8,432</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Steps</div>
+                  </div>
+                  <div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8751A;letter-spacing:1px;">47</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Active Min</div>
+                  </div>
+                  <div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#C9982A;letter-spacing:1px;">412</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Calories</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Activity Card -->
+              <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;margin-bottom:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:32px;height:32px;border-radius:8px;background:rgba(192,57,43,0.15);display:flex;align-items:center;justify-content:center;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-weight:600;color:#F5F5F8;font-size:14px;">Morning Run</div>
+                      <div style="font-size:11px;color:#6B6B80;">7:15 AM</div>
+                    </div>
+                  </div>
+                  <div style="background:rgba(74,154,106,0.15);color:#4A9A6A;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;">Completed</div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+                  <div style="background:#1E1E28;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#F5F5F8;">3.2</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Miles</div>
+                  </div>
+                  <div style="background:#1E1E28;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#F5F5F8;">28:14</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Time</div>
+                  </div>
+                  <div style="background:#1E1E28;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#F5F5F8;">8'49"</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Pace</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Competition Card -->
+              <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                  <div style="font-weight:600;color:#F5F5F8;font-size:14px;">vs. Alex R.</div>
+                  <div style="background:rgba(192,57,43,0.15);color:#C0392B;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;">Winning</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <div style="text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#C0392B;">8,432</div>
+                    <div style="font-size:10px;color:#6B6B80;">YOU</div>
+                  </div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3A3A4A;letter-spacing:2px;">VS</div>
+                  <div style="text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#9999AD;">6,218</div>
+                    <div style="font-size:10px;color:#6B6B80;">THEM</div>
+                  </div>
+                </div>
+                <div style="margin-top:12px;height:4px;background:#1E1E28;border-radius:2px;overflow:hidden;">
+                  <div style="width:58%;height:100%;background:linear-gradient(90deg,#962D22,#C0392B,#E8751A);border-radius:2px;"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+              <div class="tab-item active">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span class="tab-label" style="color:#C0392B;">Feed</span>
+              </div>
+              <div class="tab-item">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="tab-label">Compete</span>
+              </div>
+              <div class="tab-item">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span class="tab-label">Rank</span>
+              </div>
+              <div class="tab-item">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="tab-label">Profile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       STATS BAR
+       ═══════════════════════════════════════ -->
+  <section class="stats-bar" id="stats">
+    <div class="stats-bar__grid">
+      <div class="stat" data-reveal="up" data-delay="1">
+        <div class="stat__number" data-count-to="2" data-count-suffix="M+">0</div>
+        <div class="stat__label">Competitions Completed</div>
+      </div>
+      <div class="stat" data-reveal="up" data-delay="2">
+        <div class="stat__number" data-count-to="47" data-count-suffix="M">0</div>
+        <div class="stat__label">Miles Tracked</div>
+      </div>
+      <div class="stat" data-reveal="up" data-delay="3">
+        <div class="stat__number" data-count-to="180" data-count-suffix="K">0</div>
+        <div class="stat__label">Active Squads</div>
+      </div>
+      <div class="stat" data-reveal="up" data-delay="4">
+        <div class="stat__number" data-count-to="98" data-count-suffix="%">0</div>
+        <div class="stat__label">Keep Competing After Week 1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       HOW IT WORKS
+       ═══════════════════════════════════════ -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">SIMPLE BY DESIGN</p>
+        <h2 data-reveal="up" data-delay="1">HOW GAUNTLET WORKS</h2>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step__content" data-reveal="left">
+          <div class="step__number">01</div>
+          <h3 class="step__title">CONNECT YOUR WATCH</h3>
+          <p class="step__text">Link Apple Health, Strava, Garmin, Google Fit, or Fitbit. We handle the rest. Every step tracked. Every mile counted.</p>
+          <div class="step__integrations">
+            <span class="integration-badge">Apple Health</span>
+            <span class="integration-badge">Strava</span>
+            <span class="integration-badge">Garmin</span>
+            <span class="integration-badge">Google Fit</span>
+            <span class="integration-badge">Fitbit</span>
+          </div>
+        </div>
+        <div class="step__visual" data-reveal="right">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-embers"></div>
+              <div class="status-bar"><span>9:41</span><span></span></div>
+              <div style="padding:60px 24px;text-align:center;">
+                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#C0392B,#E8751A);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:#F5F5F8;margin-bottom:8px;">CONNECT YOUR DATA</div>
+                <div style="font-size:14px;color:#9999AD;line-height:1.6;margin-bottom:32px;">Link your fitness tracker to start competing. Your data syncs automatically.</div>
+                <div style="display:flex;flex-direction:column;gap:12px;padding:0 16px;">
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;">
+                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#000,#333);display:flex;align-items:center;justify-content:center;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
+                    </div>
+                    <div style="text-align:left;">
+                      <div style="font-weight:600;color:#F5F5F8;font-size:14px;">Apple Health</div>
+                      <div style="font-size:11px;color:#6B6B80;">Steps, workouts, heart rate</div>
+                    </div>
+                    <div style="margin-left:auto;color:#4A9A6A;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                  </div>
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;">
+                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#FC4C02,#E34402);display:flex;align-items:center;justify-content:center;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+                    </div>
+                    <div style="text-align:left;">
+                      <div style="font-weight:600;color:#F5F5F8;font-size:14px;">Strava</div>
+                      <div style="font-size:11px;color:#6B6B80;">Runs, rides, swims</div>
+                    </div>
+                    <svg style="margin-left:auto;color:#3A3A4A;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;">
+                    <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#007DC3,#005A8C);display:flex;align-items:center;justify-content:center;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div style="text-align:left;">
+                      <div style="font-weight:600;color:#F5F5F8;font-size:14px;">Garmin</div>
+                      <div style="font-size:11px;color:#6B6B80;">All activities</div>
+                    </div>
+                    <svg style="margin-left:auto;color:#3A3A4A;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step step--reverse">
+        <div class="step__content" data-reveal="right">
+          <div class="step__number">02</div>
+          <h3 class="step__title">PICK YOUR SQUAD</h3>
+          <p class="step__text">Build a crew of 2 to 10. Compete together against other squads your size and rank. Hold each other accountable. Nobody coasts.</p>
+        </div>
+        <div class="step__visual" data-reveal="left">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-embers"></div>
+              <div class="status-bar"><span>9:41</span><span></span></div>
+              <div style="padding:16px 20px 100px;">
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#F5F5F8;margin-bottom:4px;">COMPETE</div>
+                <div style="display:flex;gap:8px;margin-bottom:20px;">
+                  <div style="background:rgba(192,57,43,0.15);color:#C0392B;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;">Active</div>
+                  <div style="color:#6B6B80;padding:6px 16px;font-size:12px;font-weight:500;">Pending</div>
+                  <div style="color:#6B6B80;padding:6px 16px;font-size:12px;font-weight:500;">Completed</div>
+                </div>
+                <!-- Squad Card -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;margin-bottom:12px;position:relative;overflow:hidden;">
+                  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#962D22,#C0392B,#E8751A,#C9982A);"></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                    <div style="font-weight:600;color:#F5F5F8;font-size:15px;">Squad Battle</div>
+                    <div style="background:rgba(74,154,106,0.15);color:#4A9A6A;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;">Winning</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                    <div style="text-align:center;">
+                      <div style="display:flex;gap:-8px;margin-bottom:6px;justify-content:center;">
+                        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#C0392B,#E8751A);border:2px solid #14141C;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">C</div>
+                        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6888A8,#7BB8D4);border:2px solid #14141C;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">M</div>
+                        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#C9982A,#E8D48A);border:2px solid #14141C;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;">J</div>
+                      </div>
+                      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#C0392B;">14,200</div>
+                      <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;">Your Squad</div>
+                    </div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:#3A3A4A;letter-spacing:2px;">VS</div>
+                    <div style="text-align:center;">
+                      <div style="display:flex;gap:-8px;margin-bottom:6px;justify-content:center;">
+                        <div style="width:28px;height:28px;border-radius:50%;background:#3A3A4A;border:2px solid #14141C;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9999AD;">A</div>
+                        <div style="width:28px;height:28px;border-radius:50%;background:#3A3A4A;border:2px solid #14141C;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9999AD;">K</div>
+                        <div style="width:28px;height:28px;border-radius:50%;background:#3A3A4A;border:2px solid #14141C;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#9999AD;">R</div>
+                      </div>
+                      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#9999AD;">12,800</div>
+                      <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;">Them</div>
+                    </div>
+                  </div>
+                  <div style="height:4px;background:#1E1E28;border-radius:2px;overflow:hidden;">
+                    <div style="width:53%;height:100%;background:linear-gradient(90deg,#962D22,#C0392B,#E8751A);border-radius:2px;"></div>
+                  </div>
+                  <div style="text-align:center;margin-top:10px;font-size:11px;color:#6B6B80;">2 days, 14 hours remaining</div>
+                </div>
+                <!-- 1v1 Card -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4A8AAA,#7BB8D4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;">S</div>
+                      <div>
+                        <div style="font-weight:600;color:#F5F5F8;font-size:14px;">vs. Sarah K.</div>
+                        <div style="font-size:11px;color:#6B6B80;">Running  ·  Weekly</div>
+                      </div>
+                    </div>
+                    <div style="background:rgba(212,135,42,0.15);color:#D4872A;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;">Losing</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#9999AD;">11.2</div><div style="font-size:10px;color:#6B6B80;">YOU (mi)</div></div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:#3A3A4A;">VS</div>
+                    <div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#C0392B;">14.8</div><div style="font-size:10px;color:#6B6B80;">THEM (mi)</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-bar">
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-label">Feed</span></div>
+                <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span class="tab-label" style="color:#C0392B;">Compete</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-label">Rank</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="tab-label">Profile</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step__content" data-reveal="left">
+          <div class="step__number">03</div>
+          <h3 class="step__title">CLIMB THE RANKS</h3>
+          <p class="step__text">From Bronze to Obsidian. Every workout pushes you higher. Every win earns your place. Track everything. Prove it with numbers.</p>
+        </div>
+        <div class="step__visual" data-reveal="right">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-embers"></div>
+              <div class="status-bar"><span>9:41</span><span></span></div>
+              <div style="padding:16px 20px 100px;">
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#F5F5F8;margin-bottom:20px;">YOUR RANK</div>
+                <!-- Current Rank -->
+                <div style="text-align:center;margin-bottom:28px;">
+                  <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#8B6914,#C8A84E,#E8D48A);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(200,168,78,0.3);">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;background:linear-gradient(135deg,#8B6914,#C8A84E,#E8D48A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GOLD III</div>
+                  <div style="font-size:12px;color:#6B6B80;margin-top:4px;">Top 35% of athletes</div>
+                </div>
+                <!-- Progress to next rank -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:20px;margin-bottom:16px;">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                    <span style="font-size:12px;font-weight:600;color:#C8C8D6;">Progress to Gold II</span>
+                    <span style="font-size:12px;font-weight:600;color:#C8A84E;">72%</span>
+                  </div>
+                  <div style="height:6px;background:#1E1E28;border-radius:3px;overflow:hidden;">
+                    <div style="width:72%;height:100%;background:linear-gradient(90deg,#8B6914,#C8A84E,#E8D48A);border-radius:3px;"></div>
+                  </div>
+                </div>
+                <!-- Stats -->
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#F5F5F8;">23</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Wins</div>
+                  </div>
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#F5F5F8;">8</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Losses</div>
+                  </div>
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#C0392B;">14</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Day Streak</div>
+                  </div>
+                  <div style="background:#14141C;border:1px solid #2A2A38;border-radius:12px;padding:16px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#E8751A;">247</div>
+                    <div style="font-size:10px;color:#6B6B80;text-transform:uppercase;letter-spacing:1px;">Miles Total</div>
+                  </div>
+                </div>
+                <!-- All Tiers Preview -->
+                <div style="margin-top:20px;background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:16px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">ALL TIERS</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div style="text-align:center;opacity:0.4;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#5C3D2E,#8B6A4E,#A88060);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">BRZ</div></div>
+                    <div style="text-align:center;opacity:0.4;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#5A6A78,#8C9BAA,#B8C8D4);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">SLV</div></div>
+                    <div style="text-align:center;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8B6914,#C8A84E,#E8D48A);margin:0 auto 4px;box-shadow:0 0 12px rgba(200,168,78,0.4);"></div><div style="font-size:8px;color:#C8A84E;font-weight:600;">GOLD</div></div>
+                    <div style="text-align:center;opacity:0.3;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4A8AAA,#7BB8D4,#AAD4EA);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">PLT</div></div>
+                    <div style="text-align:center;opacity:0.3;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#6A9FCC,#B8D4F0,#E8F0FF);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">DMD</div></div>
+                    <div style="text-align:center;opacity:0.2;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2A2A34,#5A5A6A,#7A7A8A);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">TTN</div></div>
+                    <div style="text-align:center;opacity:0.2;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1A0A08,#3A1510,#962D22);margin:0 auto 4px;"></div><div style="font-size:8px;color:#6B6B80;">OBS</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-bar">
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-label">Feed</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span class="tab-label">Compete</span></div>
+                <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-label" style="color:#C0392B;">Rank</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="tab-label">Profile</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FEATURES
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark" id="features">
+    <div class="container">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">EVERYTHING YOU NEED</p>
+        <h2 data-reveal="up" data-delay="1">BUILT TO COMPETE</h2>
+        <p class="section-header__subtitle" data-reveal="up" data-delay="2">Every feature designed around one principle: competition makes you better.</p>
+      </div>
+
+      <div class="features__grid">
+        <div class="card" data-reveal="up" data-delay="1">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="card__title">HEAD-TO-HEAD</h3>
+          <p class="card__text">Set the activity. Set the rules. See who shows up. Real-time progress tracking. No hiding from the numbers.</p>
+        </div>
+        <div class="card" data-reveal="up" data-delay="2">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="card__title">SQUADS</h3>
+          <p class="card__text">2 to 10 friends. 1 squad. Compete as a unit against crews your size and rank. You don't just let yourself down.</p>
+        </div>
+        <div class="card" data-reveal="up" data-delay="3">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="card__title">RANKED SYSTEM</h3>
+          <p class="card__text">Bronze through Obsidian. 7 tiers. Every workout counts toward your rank. Compete against athletes at your level.</p>
+        </div>
+        <div class="card" data-reveal="up" data-delay="4">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3 class="card__title">DATA VISUALIZATION</h3>
+          <p class="card__text">Weekly mileage curves. Step count heatmaps. Win/loss records. Rank progression charts. The numbers tell the story.</p>
+        </div>
+        <div class="card" data-reveal="up" data-delay="5">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          </div>
+          <h3 class="card__title">SHAREABLE CARDS</h3>
+          <p class="card__text">Every win. Every rank up. Every streak milestone. Auto-generated cards built for Instagram, TikTok, and X.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       RANKED SYSTEM
+       ═══════════════════════════════════════ -->
+  <section class="section ranks" id="ranks">
+    <div class="container container--wide">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">7 TIERS. EVERY RANK EARNED.</p>
+        <h2 data-reveal="up" data-delay="1">THE CLIMB</h2>
+        <p class="section-header__subtitle" data-reveal="up" data-delay="2">From your first step to the top 1%. Every promotion deserved.</p>
+      </div>
+
+      <div class="ranks__tiers">
+        <div class="rank-tier" data-reveal="up" data-delay="1">
+          <div class="rank-badge rank-badge--bronze">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-bronze-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">BRONZE</div>
+          <div class="rank-tier__percentile">Bottom 40%</div>
+          <div class="rank-tier__desc">The starting line</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="2">
+          <div class="rank-badge rank-badge--silver">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-silver-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SILVER</div>
+          <div class="rank-tier__percentile">40th - 60th</div>
+          <div class="rank-tier__desc">Consistent. Showing up.</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="3">
+          <div class="rank-badge rank-badge--gold">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">GOLD</div>
+          <div class="rank-tier__percentile">60th - 80th</div>
+          <div class="rank-tier__desc">Dedicated. Strong output.</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="4">
+          <div class="rank-badge rank-badge--platinum">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-platinum-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PLATINUM</div>
+          <div class="rank-tier__percentile">80th - 90th</div>
+          <div class="rank-tier__desc">High-performing. Serious.</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="5">
+          <div class="rank-badge rank-badge--diamond">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-diamond-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DIAMOND</div>
+          <div class="rank-tier__percentile">90th - 97th</div>
+          <div class="rank-tier__desc">Elite. Top 10%.</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="6">
+          <div class="rank-badge rank-badge--titanium">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-titanium-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">TITANIUM</div>
+          <div class="rank-tier__percentile">97th - 99th</div>
+          <div class="rank-tier__desc">Best of the best.</div>
+        </div>
+        <div class="rank-tier" data-reveal="up" data-delay="7">
+          <div class="rank-badge rank-badge--obsidian animate-pulse-glow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="rank-tier__name" style="background:var(--rank-obsidian-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">OBSIDIAN</div>
+          <div class="rank-tier__percentile">Top 1%</div>
+          <div class="rank-tier__desc">Forged.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       APP GALLERY
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark" id="app">
+    <div class="container">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">SEE IT IN ACTION</p>
+        <h2 data-reveal="up" data-delay="1">EVERY SCREEN BUILT TO COMPETE</h2>
+      </div>
+      <div class="gallery__track" data-reveal="up" data-delay="2">
+        <!-- Gallery Phone 1: Feed -->
+        <div class="gallery__item">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-embers"></div>
+              <div class="status-bar"><span>9:41</span><span></span></div>
+              <div style="padding:16px 20px 100px;">
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#F5F5F8;margin-bottom:16px;">INSIGHTS</div>
+                <!-- Weekly Mileage Chart -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:16px;margin-bottom:12px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">WEEKLY MILEAGE</div>
+                  <div style="display:flex;align-items:flex-end;gap:8px;height:100px;">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:40px;background:linear-gradient(180deg,#C0392B,#962D22);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">M</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:65px;background:linear-gradient(180deg,#C0392B,#962D22);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">T</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:30px;background:linear-gradient(180deg,#C0392B,#962D22);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">W</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:80px;background:linear-gradient(180deg,#C0392B,#962D22);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">T</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:55px;background:linear-gradient(180deg,#C0392B,#962D22);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">F</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:90px;background:linear-gradient(180deg,#E8751A,#C0392B);border-radius:4px;"></div>
+                      <span style="font-size:9px;color:#6B6B80;">S</span>
+                    </div>
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+                      <div style="width:100%;height:20px;background:linear-gradient(180deg,rgba(192,57,43,0.3),rgba(150,45,34,0.3));border-radius:4px;border:1px dashed rgba(192,57,43,0.3);"></div>
+                      <span style="font-size:9px;color:#C0392B;">S</span>
+                    </div>
+                  </div>
+                  <div style="text-align:center;margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:24px;color:#F5F5F8;">18.4 <span style="font-size:14px;color:#6B6B80;">MI THIS WEEK</span></div>
+                </div>
+                <!-- Sport Breakdown -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:16px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">SPORT BREAKDOWN</div>
+                  <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="width:80px;height:80px;border-radius:50%;background:conic-gradient(#C0392B 0deg 200deg, #E8751A 200deg 280deg, #C9982A 280deg 360deg);position:relative;">
+                      <div style="position:absolute;inset:16px;border-radius:50%;background:#14141C;"></div>
+                    </div>
+                    <div style="flex:1;">
+                      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#C0392B;"></div><span style="font-size:12px;color:#C8C8D6;">Running 55%</span></div>
+                      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:2px;background:#E8751A;"></div><span style="font-size:12px;color:#C8C8D6;">Cycling 22%</span></div>
+                      <div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:2px;background:#C9982A;"></div><span style="font-size:12px;color:#C8C8D6;">Walking 23%</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-bar">
+                <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-label" style="color:#C0392B;">Feed</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span class="tab-label">Compete</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-label">Rank</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="tab-label">Profile</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Insights & Data</div>
+        </div>
+
+        <!-- Gallery Phone 2: Shareable Card -->
+        <div class="gallery__item">
+          <div class="phone-frame">
+            <div class="phone-screen" style="display:flex;align-items:center;justify-content:center;background:#0C0C12;">
+              <div class="phone-screen-embers"></div>
+              <!-- Shareable Card Preview -->
+              <div style="width:260px;background:linear-gradient(180deg,#0C0C12,#1E1E28);border-radius:16px;overflow:hidden;position:relative;z-index:2;">
+                <div style="height:3px;background:linear-gradient(90deg,#962D22,#C0392B,#E8751A,#C9982A);"></div>
+                <div style="padding:28px 24px;text-align:center;">
+                  <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:16px;">WEEKLY RECAP</div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;color:#C0392B;line-height:1;letter-spacing:2px;">3-1</div>
+                  <div style="font-size:13px;color:#9999AD;margin:8px 0 20px;">This week's record</div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;">
+                    <div style="background:#14141C;border-radius:8px;padding:10px;">
+                      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#F5F5F8;">47</div>
+                      <div style="font-size:8px;color:#6B6B80;text-transform:uppercase;">Miles</div>
+                    </div>
+                    <div style="background:#14141C;border-radius:8px;padding:10px;">
+                      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#F5F5F8;">14</div>
+                      <div style="font-size:8px;color:#6B6B80;text-transform:uppercase;">Streak</div>
+                    </div>
+                    <div style="background:#14141C;border-radius:8px;padding:10px;">
+                      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#C8A84E;">Gold</div>
+                      <div style="font-size:8px;color:#6B6B80;text-transform:uppercase;">Rank</div>
+                    </div>
+                  </div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:6px;color:#3A3A4A;">GAUNTLET</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Shareable Cards</div>
+        </div>
+
+        <!-- Gallery Phone 3: Profile -->
+        <div class="gallery__item">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-screen-embers"></div>
+              <div class="status-bar"><span>9:41</span><span></span></div>
+              <div style="padding:16px 20px 100px;">
+                <div style="text-align:center;margin-bottom:24px;">
+                  <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#C0392B,#E8751A);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;">C</div>
+                  <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#F5F5F8;">CONNOR</div>
+                  <div style="font-size:12px;color:#6B6B80;margin-top:2px;">@connor_runs</div>
+                  <div style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(200,168,78,0.12);padding:4px 12px;border-radius:20px;">
+                    <div style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#8B6914,#C8A84E,#E8D48A);"></div>
+                    <span style="font-size:12px;font-weight:600;color:#C8A84E;">Gold III</span>
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;">
+                  <div style="background:#14141C;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#F5F5F8;">23</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;">Wins</div>
+                  </div>
+                  <div style="background:#14141C;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#F5F5F8;">8</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;">Losses</div>
+                  </div>
+                  <div style="background:#14141C;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#C0392B;">74%</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;">Win Rate</div>
+                  </div>
+                  <div style="background:#14141C;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:#E8751A;">14</div>
+                    <div style="font-size:9px;color:#6B6B80;text-transform:uppercase;">Streak</div>
+                  </div>
+                </div>
+                <!-- Trophy Case -->
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:16px;margin-bottom:12px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">TROPHY CASE</div>
+                  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+                    <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#C0392B,#E8751A);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div style="font-size:8px;color:#9999AD;">First Win</div></div>
+                    <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#C9982A,#E8D48A);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div style="font-size:8px;color:#9999AD;">Gold Tier</div></div>
+                    <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#4A9A6A,#6AB88A);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div style="font-size:8px;color:#9999AD;">7-Day Streak</div></div>
+                    <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#3A3A4A,#6B6B80);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;opacity:0.4;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><div style="font-size:8px;color:#3A3A4A;">Locked</div></div>
+                  </div>
+                </div>
+                <div style="background:#14141C;border:1px solid #2A2A38;border-radius:14px;padding:16px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B80;margin-bottom:12px;">RECENT ACTIVITY</div>
+                  <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:#4A9A6A;"></div><div style="flex:1;font-size:13px;color:#C8C8D6;">Won vs. Alex R. — 8,432 to 6,218</div><div style="font-size:11px;color:#6B6B80;">2h ago</div></div>
+                    <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:#C0392B;"></div><div style="flex:1;font-size:13px;color:#C8C8D6;">Morning Run — 3.2 mi, 28:14</div><div style="font-size:11px;color:#6B6B80;">7h ago</div></div>
+                    <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:#C9982A;"></div><div style="flex:1;font-size:13px;color:#C8C8D6;">Promoted to Gold III</div><div style="font-size:11px;color:#6B6B80;">1d ago</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-bar">
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="tab-label">Feed</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span class="tab-label">Compete</span></div>
+                <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-label">Rank</span></div>
+                <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="tab-label" style="color:#C0392B;">Profile</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-label">Profile & Trophies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════ -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">FROM THE COMMUNITY</p>
+        <h2 data-reveal="up" data-delay="1">THE SCOREBOARD SPEAKS</h2>
+      </div>
+
+      <div class="testimonials__grid">
+        <div class="testimonial-card" data-reveal="up" data-delay="1">
+          <p class="testimonial-card__quote">"3 for 3 this week. My squad hasn't lost since we hit Gold. This app is the reason I actually run now."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background:linear-gradient(135deg,#C0392B,#E8751A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;">A</div>
+            <div>
+              <div class="testimonial-card__name">@alexrunner</div>
+              <div class="testimonial-card__handle">
+                <span style="display:inline-flex;align-items:center;gap:4px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#8B6914,#C8A84E);display:inline-block;"></span>
+                  Gold III
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-reveal="up" data-delay="2">
+          <p class="testimonial-card__quote">"Downloaded it because my roommate wouldn't shut up about it. Now I'm the one talking trash. Diamond II and climbing."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background:linear-gradient(135deg,#6A9FCC,#B8D4F0);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;">M</div>
+            <div>
+              <div class="testimonial-card__name">@mikelifts</div>
+              <div class="testimonial-card__handle">
+                <span style="display:inline-flex;align-items:center;gap:4px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#6A9FCC,#B8D4F0);display:inline-block;"></span>
+                  Diamond II
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-reveal="up" data-delay="3">
+          <p class="testimonial-card__quote">"We set up a Gauntlet between our two frat houses. 47 people competing. Best thing we've done all semester."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background:linear-gradient(135deg,#4A8AAA,#7BB8D4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;">J</div>
+            <div>
+              <div class="testimonial-card__name">@kappa_sig_jake</div>
+              <div class="testimonial-card__handle">
+                <span style="display:inline-flex;align-items:center;gap:4px;">
+                  <span style="width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#4A8AAA,#7BB8D4);display:inline-block;"></span>
+                  Platinum I
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRICING
+       ═══════════════════════════════════════ -->
+  <section class="section section--dark" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <p class="kicker" data-reveal="up">SIMPLE PRICING</p>
+        <h2 data-reveal="up" data-delay="1">PICK YOUR TIER</h2>
+      </div>
+
+      <div class="pricing__grid">
+        <div class="pricing-card" data-reveal="up" data-delay="1">
+          <div class="pricing-card__name">FREE</div>
+          <div class="pricing-card__price">$0</div>
+          <div class="pricing-card__period">Free forever</div>
+          <ul class="pricing-card__features">
+            <li>3 active competitions</li>
+            <li>1 custom challenge per month</li>
+            <li>Squad participation</li>
+            <li>Full ranked system</li>
+            <li>Basic data visualizations</li>
+            <li>Shareable cards</li>
+          </ul>
+          <a href="#download" class="btn btn--ghost" style="width:100%;">Download Free</a>
+        </div>
+        <div class="pricing-card pricing-card--pro" data-reveal="up" data-delay="2">
+          <div class="pricing-card__badge">POPULAR</div>
+          <div class="pricing-card__name" style="color:var(--white-fire);">PRO</div>
+          <div class="pricing-card__price">$4.99</div>
+          <div class="pricing-card__period">per month</div>
+          <ul class="pricing-card__features">
+            <li>Everything in Free</li>
+            <li>Unlimited active competitions</li>
+            <li>Unlimited custom challenges</li>
+            <li>Advanced analytics and exports</li>
+            <li>Performance predictions</li>
+            <li>Custom cosmetics: badges, themes, banners</li>
+            <li>Exclusive Pro card themes</li>
+          </ul>
+          <a href="#download" class="btn btn--primary" style="width:100%;">Start Pro</a>
+        </div>
+      </div>
+      <p class="pricing__note" data-reveal="up">No ads. Not now, not ever.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DOWNLOAD CTA
+       ═══════════════════════════════════════ -->
+  <section class="section download-cta" id="download">
+    <div class="download-cta__bg"></div>
+    <canvas id="cta-particles"></canvas>
+    <div class="download-cta__content container">
+      <p class="kicker" data-reveal="up">YOUR MOVE</p>
+      <h2 data-reveal="up" data-delay="1">YOUR SQUAD IS WAITING</h2>
+      <p class="download-cta__subtitle" data-reveal="up" data-delay="2">The best accountability partner isn't a coach or an app notification. It's a friend you're trying to beat.</p>
+      <div class="download-cta__stores" data-reveal="up" data-delay="3">
+        <a href="#" class="btn btn--store">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--pure)"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/></svg>
+          <div>
+            <div style="font-size:10px;color:var(--ash);font-weight:500;">Download on the</div>
+            <div style="font-size:16px;font-weight:600;color:var(--white-hot);">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="btn btn--store">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--pure)"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33-2.995 1.736-2.342-2.342 3.035-3.035zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+          <div>
+            <div style="font-size:10px;color:var(--ash);font-weight:500;">Get it on</div>
+            <div style="font-size:16px;font-weight:600;color:var(--white-hot);">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand-col">
+          <div class="footer__brand">GAUNTLET</div>
+          <p class="footer__tagline">Compete. Climb. Conquer.</p>
+          <p style="font-size:13px;color:var(--ash);margin-top:16px;line-height:1.6;">The social fitness competition app. Where every workout counts and every friend is a rival.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Product</div>
+          <a href="#features" class="footer__link">Features</a>
+          <a href="#ranks" class="footer__link">Ranked System</a>
+          <a href="#pricing" class="footer__link">Pricing</a>
+          <a href="#download" class="footer__link">Download</a>
+        </div>
+        <div>
+          <div class="footer__heading">Company</div>
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+          <a href="#" class="footer__link">Contact</a>
+        </div>
+        <div>
+          <div class="footer__heading">Legal</div>
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Service</a>
+          <a href="#" class="footer__link">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>2026 Gauntlet. All rights reserved.</span>
+        <div class="footer__integrations">
+          <span>Works with</span>
+          <span>Apple Health</span>
+          <span>Strava</span>
+          <span>Garmin</span>
+          <span>Google Fit</span>
+          <span>Fitbit</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
