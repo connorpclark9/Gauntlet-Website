@@ -2,34 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "website",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx", "vite", "--port", "3000"],
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 3000
-    },
-    {
-      "name": "pitch-deck",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx", "serve", "docs", "-l", "3456", "--no-clipboard"],
-      "port": 3456
-    },
-    {
-      "name": "expo-web",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx", "expo", "start", "--web", "--port", "8081"],
-      "port": 8081
-    },
-    {
-      "name": "mockups",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx", "serve", "design/mockups", "-l", "8765", "--no-clipboard"],
-      "port": 8765
-    },
-    {
-      "name": "design",
-      "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "npx", "serve", "design", "-l", "8766", "--no-clipboard"],
-      "port": 8766
     }
   ]
 }

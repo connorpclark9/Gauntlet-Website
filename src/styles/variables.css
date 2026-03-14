@@ -52,7 +52,7 @@
   --rank-platinum-gradient: linear-gradient(135deg, #4A8AAA, #7BB8D4, #AAD4EA);
   --rank-diamond-gradient: linear-gradient(135deg, #6A9FCC, #B8D4F0, #E8F0FF);
   --rank-titanium-gradient: linear-gradient(135deg, #2A2A34, #5A5A6A, #7A7A8A);
-  --rank-obsidian-gradient: linear-gradient(135deg, #1A0A08, #3A1510, #962D22);
+  --rank-obsidian-gradient: linear-gradient(135deg, #3A1510, #962D22, #C0392B);
 
   /* Brand Gradients */
   --ember-flow: linear-gradient(90deg, #962D22, #C0392B, #E8751A);

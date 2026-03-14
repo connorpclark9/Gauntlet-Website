@@ -261,7 +261,7 @@
 .step__number {
   font-family: var(--font-display);
   font-size: clamp(80px, 10vw, 140px);
-  color: rgba(30, 30, 40, 0.5);
+  color: rgba(42, 42, 56, 0.7);
   line-height: 1;
   margin-bottom: -20px;
   user-select: none;
@@ -418,8 +418,9 @@
   gap: 12px;
   text-align: center;
   transition: transform 0.3s ease;
-  min-width: 100px;
-  flex: 0 1 auto;
+  min-width: 120px;
+  max-width: 140px;
+  flex: 1 1 0;
 }
 
 .rank-tier:hover {
@@ -489,6 +490,14 @@
   font-weight: 500;
 }
 
+.rank-tier__desc {
+  font-size: 12px;
+  color: var(--iron);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 120px;
+}
+
 @media (max-width: 768px) {
   .ranks__tiers {
     gap: 20px;
@@ -509,6 +518,13 @@
   gap: 32px;
   padding: 0 calc((100vw - 1200px) / 2);
   align-items: center;
+}
+
+.gallery__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .gallery__track .phone-frame {
@@ -623,7 +639,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 120px 0;
+  padding: 80px 0 100px;
 }
 
 .download-cta__content {

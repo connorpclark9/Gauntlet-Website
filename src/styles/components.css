@@ -274,6 +274,107 @@
   animation: screenDrift 8s ease-in-out infinite alternate;
 }
 
+/* Phone bottom glow */
+.phone-screen-glow-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, rgba(192, 57, 43, 0.06), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+/* ==========================================================================
+   PHONE STATUS BAR
+   ========================================================================== */
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-hot);
+  position: relative;
+  z-index: 5;
+}
+
+.status-bar svg {
+  display: inline-block;
+}
+
+
+/* ==========================================================================
+   PHONE TAB BAR
+   ========================================================================== */
+
+.tab-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(6, 6, 10, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--slate);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  z-index: 10;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.tab-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--ash);
+}
+
+.tab-item.active .tab-icon {
+  color: var(--ember);
+}
+
+.tab-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ash);
+  letter-spacing: 0.3px;
+}
+
+.tab-item.active .tab-label {
+  color: var(--ember);
+}
+
+
+/* ==========================================================================
+   PHONE LABEL (Gallery Captions)
+   ========================================================================== */
+
+.phone-label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--silver);
+  text-align: center;
+  margin-top: 16px;
+  letter-spacing: 0.5px;
+}
+
 
 /* ==========================================================================
    RANK BADGES
@@ -313,8 +414,6 @@
 
 .rank-badge--diamond {
   background: var(--rank-diamond-gradient);
-  background-size: 200% 200%;
-  animation: shimmer 3s linear infinite;
 }
 
 .rank-badge--titanium {
@@ -340,6 +439,8 @@
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-card:hover {
@@ -398,6 +499,7 @@
   list-style: none;
   text-align: left;
   margin-bottom: var(--space-xl);
+  flex: 1;
 }
 
 .pricing-card__features li {
@@ -861,9 +963,16 @@
 
 .footer__integrations {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
   opacity: 0.5;
+  font-size: 12px;
+  color: var(--ash);
+}
+
+.footer__integrations span:first-child {
+  color: var(--iron);
+  margin-right: 4px;
 }
 
 .footer__integrations img {
@@ -878,6 +987,13 @@
 }
 
 /* Footer responsive */
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer__grid {
     grid-template-columns: 1fr;
@@ -887,12 +1003,5 @@
   .footer__bottom {
     flex-direction: column;
     text-align: center;
-  }
-}
-
-@media (max-width: 1024px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
   }
 }
